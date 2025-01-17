@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 13:28:15 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/16 21:13:06 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/17 02:36:49 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ char		*ft_uitoa(unsigned int n);
 char		*ft_hexitoa(unsigned int n, char *base);
 int			ft_putpoint(unsigned long int n);
 char		*ft_invert(char *str);
+int			ft_isspace(char c);
 
 #endif

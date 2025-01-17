@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: armitite <armitite@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:47:09 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/16 21:06:53 by armitite         ###   ########.fr       */
+/*   Updated: 2025/01/17 01:52:01 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	move_player(t_player *player)
 	double	rot_speed;
 	double	move_speed;
 
-	move_speed = 0.02;
-	rot_speed = 0.02;
+	move_speed = 0.009;
+	rot_speed = 0.009;
 	if (player->p_up)
 	{ 
 		if (player->game->map.map[(int)(player->posx + player->dirx * move_speed)][(int)player->posy] == '0')

@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:48:29 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/16 21:12:19 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/17 03:40:54 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 
 #define WIDTH 1280
 #define HEIGHT 720
+
+typedef struct s_sprites
+{
+	void	*north;
+	void	*south;
+	void	*east;
+	void	*west;
+	int		*floor;
+	int		*ceiling;
+}	t_sprites;
 
 typedef struct s_col
 {
@@ -64,20 +74,43 @@ typedef struct s_player
 typedef struct s_map
 {
 	char	**map;
-} t_map;
+	char	**map;
+	int		bool_id;
+	int		s_line;
+	int		lin;
+	int		col;
+}	t_map;
 
 typedef struct s_game
 {
 	t_player	p1;
 	t_map		map;
 	t_img		img;
-	t_wall		wall;
-	t_wall		wall2;
-	t_wall		wall3;
-	t_wall		wall4;
+	t_wall		*wall;
+	t_sprites	sprt;
+	char		*file;
 	void		*mlx;
 	void		*win;
 }	t_game;
+
+
+//exit
+void	ft_error(char *str);
+void	ft_freeparse(t_game *game);
+
+//utils
+int		ft_open(char *file);
+
+//parsing utils
+void	ft_init_pars(t_game *game);
+long	ft_atorgb(char *str);
+int		ft_checkeof(char *str, int fd);
+
+//parsing map
+void	ft_mapinfo(int fd, t_game *game, char *str);
+
+//parsing
+void	parsing(char *file, t_game *game);
 
 int	parse_xpm(t_wall *wall, char *file);
 int	ft_atoi_base(char *str, char *base);
