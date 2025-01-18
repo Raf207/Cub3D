@@ -1,16 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_map.c                                      :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 03:30:18 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/17 03:39:49 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 04:14:55 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/test.h"
+
+int	ft_create_map(int fd, t_game *game)
+{
+	char	*str;
+	int		i;
+
+	i = -1;
+	str = get_next_line(fd);
+	while (++i < game->map.s_line - 1)
+	{
+		free(str);
+		str = get_next_line(fd);
+	}
+	game->map.map = malloc(sizeof(char *) * game->map.lin);
+	if (!game->map.map)
+		return (ft_freeparse(game), close(fd), 1);
+	i = -1;
+	while (++i < game->map.lin)
+	{
+		game->map.map[i] = calloc(sizeof(char), game->map.col + 1);
+		if (!game->map.map[i])
+			return (free(game->map.map), ft_freeparse(game), 1);
+		ft_strlcpy(game->map.map[i], str, ft_strlen(str) + 1);
+		free(str);
+		str = get_next_line(fd);
+	}
+	return (close(fd), free(str), 0);
+}
 
 int	ft_mapchar(t_game *game, char *str, int fd)
 {
@@ -83,7 +111,7 @@ void	ft_mapinfo(int fd, t_game *game, char *str)
 				game, game->map.map))
 		{
 			ft_freemap(game->map.map, game);
-			ft_freeall(game);
+			ft_freeparse(game);
 			ft_error("Error\nInvalid map\n");
 		}
 		find = ft_findo(game->map.map, game);

@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 01:59:41 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/17 02:10:42 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 04:26:56 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ int	main(int ac, char **av)
 		check_filetype(av[1]);
 		game.file = av[1];
 		parsing(av[1], &game);
-		// gameloop(&game);
-		ft_freeall(&game);
+		if (ft_create_map(ft_open(av[1]), &game))
+			ft_freeparse(&game);
+		printf("oui\n");
+		int i = -1;
+		while (++i < game.map.lin)
+			printf("%s\n", game.map.map[i]);
+		ft_freemap(game.map.map, &game);
+		ft_freeparse(&game);
 	}
 }

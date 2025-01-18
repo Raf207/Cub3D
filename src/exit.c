@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 02:06:44 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/17 03:39:23 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 04:16:27 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,14 @@ void	ft_freeparse(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+}
+
+void	ft_freemap(char **map, t_game *game)
+{
+	int	i;
+
+	i = -1;
+	while (++i < game->map.lin)
+		free(map[i]);
+	free(map);
 }

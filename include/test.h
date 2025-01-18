@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:48:29 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/17 03:40:54 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 04:24:08 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ typedef struct s_player
 typedef struct s_map
 {
 	char	**map;
-	char	**map;
 	int		bool_id;
 	int		s_line;
 	int		lin;
@@ -97,6 +96,7 @@ typedef struct s_game
 //exit
 void	ft_error(char *str);
 void	ft_freeparse(t_game *game);
+void	ft_freemap(char **map, t_game *game);
 
 //utils
 int		ft_open(char *file);
@@ -107,7 +107,11 @@ long	ft_atorgb(char *str);
 int		ft_checkeof(char *str, int fd);
 
 //parsing map
+int		ft_create_map(int fd, t_game *game);
+int		ft_findo(char **map, t_game *game);
+int		ft_backtrack(int x, int y, t_game *game, char **plan);
 void	ft_mapinfo(int fd, t_game *game, char *str);
+void	ft_checkrgb(char *str, int len);
 
 //parsing
 void	parsing(char *file, t_game *game);

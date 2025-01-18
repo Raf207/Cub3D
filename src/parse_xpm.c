@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 15:22:39 by armitite          #+#    #+#             */
-/*   Updated: 2025/01/16 21:18:14 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 05:20:55 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int make_walls(int fd, int number, t_wall *wall)
 		wall->wall[i] = ft_strtrim(wall->wall[i], "\n");
 		wall->wall[i] = ft_strtrim(wall->wall[i], ",");
 		wall->wall[i] = ft_strtrim(wall->wall[i], "\"");
-		// printf("%s\n", wall->wall[i]);
 		i++;
 	}
 	return (0);

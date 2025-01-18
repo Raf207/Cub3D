@@ -6,7 +6,7 @@
 /*   By: rafnasci <rafnasci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 02:20:43 by rafnasci          #+#    #+#             */
-/*   Updated: 2025/01/17 03:41:42 by rafnasci         ###   ########.fr       */
+/*   Updated: 2025/01/18 04:30:50 by rafnasci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,7 @@ void	ft_init_pars(t_game *game)
 	game->map.s_line = 1;
 	game->map.col = 0;
 	game->map.lin = 0;
+	game->p1.posx = 0;
+	game->p1.posy = 0;
 }
+
